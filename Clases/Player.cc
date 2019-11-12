@@ -2,18 +2,18 @@
 
 Player::Player(){
 
-shipTexture.loadFromFile("../Sprites/space_playerModel.png");
+shipTexture.loadFromFile("../Sprites/space_playerModel.png"); //Carga el archivo de Textura
 
-	this -> setTexture(shipTexture);
+	this -> setTexture(shipTexture); //Carga la Textura al Player
 
-	position.x = 255.f;
+	position.x = 255.f; //Indica la pocicion inicial del player
 	position.y = 700.f;
 
-	this -> setPosition(position);
+	this -> setPosition(position); //Setea la posicion inicial en el player
 
-	this -> setScale(0.15f,0.15f);
+	this -> setScale(0.15f,0.15f); //reescala el sprite
 
-    this -> setRotation(-90.f);
+    this -> setRotation(-90.f); //Asigna un valor de rotacion al sprite
 
 	/*buffer.loadFromFile("../Audio/ship.ogg");
 
@@ -28,11 +28,13 @@ shipTexture.loadFromFile("../Sprites/space_playerModel.png");
 }
 
 
-void Player::Controller(){
+void Player::Controller(){ //Metodo de controles
 
-    position = this -> getPosition();
-    x = position.x;
-	y = position.y;
+    position = this -> getPosition(); //Obtiene la posicion del Player, retorna un objeto de tipo Vector2f 
+    x = position.x; //Almacena la posicion en X
+	y = position.y;   //Almacena la posicion en Y
+
+    //Inicia la deteccion de teclado y modifica la posicio inicial
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))		
         this -> setPosition(x, y - 10.0000);
@@ -48,17 +50,18 @@ void Player::Controller(){
 
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         this -> setPosition(x + 10.0000, y);
-       		
+
+    //Termina la deteccion de teclado      		
 
 }
 
-float Player::Get_axis_x(){
+float Player::Get_axis_x(){ //Obtiene la posicion en X
 
     return x;
 
 }
 
-float Player::Get_axis_y(){
+float Player::Get_axis_y(){ //Obtiene la posicion en Y
 
     return y;
 
