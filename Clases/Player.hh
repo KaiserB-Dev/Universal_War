@@ -6,29 +6,29 @@
 
 
 
-class Player : public sf::Sprite{
+class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase  Sprite
 
-public:
+	public:
 
-Player();
+		Player();
 
-void Controller();
+		void Controller();
 
-float Get_axis_x();
+		float Get_axis_x();
 
-float Get_axis_y();
+		float Get_axis_y();
 
-private:
+	private:
 
-	sf::Texture shipTexture;
+		sf::Texture shipTexture; //Objeto que carga la textura a la nave
 
-	sf::Vector2f position;
+		sf::Vector2f position; //Objeto posicion 
 
-	//sf::SoundBuffer buffer;
+		//sf::SoundBuffer buffer;
 
-	//sf::Sound sound_ship;
+		//sf::Sound sound_ship;
 
-	float x,y;
+		float x,y; //Almacenamiento de posicion
 
 
 

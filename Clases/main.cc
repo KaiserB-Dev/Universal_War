@@ -4,7 +4,7 @@ int main(){
 
 	windowScene win;
 
-	win.play();
+	win.play(); //ejecuta el programa
 	
 
 	return 0;
