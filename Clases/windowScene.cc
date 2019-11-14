@@ -8,7 +8,7 @@ windowScene::windowScene(){
 
 	window.setVerticalSyncEnabled(true); //Impide la pantalla completa
 
-	background_tex.loadFromFile("../Sprites/background.jpg"); //Carga el fondo de la carpeta Sprites
+	background_tex.loadFromFile("../Sprites/Spr_Space.jpg"); //Carga el fondo de la carpeta Sprites
 
 	background.setTexture(background_tex); //Asigna la textura al objeto fondo
 
@@ -17,6 +17,8 @@ windowScene::windowScene(){
 	back_music.setLoop(true); //Cicla la musica
 
 	back_music.play(); //Reproduce la pista
+
+	time = clock.restart(); //sreinicia el clock
 }
 	
 
@@ -36,21 +38,56 @@ void windowScene::play(){
             	if (event.type == sf::Event::Closed) //Valida el evento del boton cerrar
                 	window.close(); //Cierra la Ventana
 
+
+            	}
+
+            	player.Detect_Axis(); //Detecta la pocicion del objeto en los ejes x & y
             	std::cout << "X= "<<x<<std::endl;
             	std::cout << "Y= "<<y<<std::endl;
-            	
-            			player.Controller(); //Invoca el metodo controller 
 
+                //Las condiciones implementadas permiten hacer la deteccion de los bordes de la ventana y limita el movimiento de la nave, aun hay un bug por arreglar pero es minimo
+
+       			if(x <= 475.0f && x >= -45.0f){
+
+            		if(y <= 405.0f && y >= -195.0f){
+
+                         //Invoca el metodo controller
+
+                        player.Controller();
+
+
+            			std::cout<<"DENTRO DEL LIMITE"<<std::endl; 
+ 
+            		}
+
+                else{
+
+                    std::cout<<"FUERA DEL LIMITE"<<std::endl; 
+                    player.setPosition(x , 405.0f);
+                    
+                }
 
         	}
 
-        	window.draw(background); //Dibuja el fondo en la vemtana
+           else{ 
+
+              std::cout<<"FUERA DEL LIMITE"<<std::endl; 
+                    player.setPosition(-20.0f , y);
+
+           }
+
+           //Termina la deteccion del borde de la pantalla
+
+            window.draw(background); //Dibuja el fondo en la veNtana
 
         	window.draw(player); //Dibuja el jugador en la ventana
 
         	window.display(); //Muestra la GUI en pantalla
 
+
         }
+
+        
 
 
 }

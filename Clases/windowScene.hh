@@ -25,6 +25,10 @@ private:
 	sf::Sprite background; //Objeto del fondo para cargar su textura
 
 	sf::Music back_music; //Musica
+
+	sf::Clock clock;
+
+	sf::Time time;
 	
 	Player player; //Jugador
 	
