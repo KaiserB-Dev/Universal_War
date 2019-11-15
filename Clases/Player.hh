@@ -21,8 +21,6 @@ class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase  
 
 		void Detect_Axis();
 
-		void invoke_animation();
-
 		void Shoot();
 
 		void colition();
@@ -39,11 +37,13 @@ class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase  
 
 		sf::Vector2f position; //Objeto posicion 
 
-		//sf::SoundBuffer buffer;
+		sf::SoundBuffer buffer;
 
-		//sf::Sound sound_ship;
+		sf::Sound sound_ship;
 
 		float x,y; //Almacenamiento de posicion
+
+		Bullet bullet;
 };
 	
 #endif

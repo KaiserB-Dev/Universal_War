@@ -9,6 +9,12 @@ public:
 
 	Bullet();
 
+	void Detect_Axis();
+
+	float Get_axis_x();
+
+	float Get_axis_y();
+
 private:
 
 	sf::Texture bullet_texture;
@@ -22,6 +28,9 @@ private:
 	sf::Vector2f position_bullet;
 
 	float x,y;
+
+
+
 
 };
 

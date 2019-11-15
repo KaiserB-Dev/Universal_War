@@ -42,8 +42,8 @@ void windowScene::play(){
             	}
 
             	player.Detect_Axis(); //Detecta la pocicion del objeto en los ejes x & y
-            	std::cout << "X= "<<x<<std::endl;
-            	std::cout << "Y= "<<y<<std::endl;
+            	/*std::cout << "X= "<<x<<std::endl;
+            	std::cout << "Y= "<<y<<std::endl;*/
 
                 //Las condiciones implementadas permiten hacer la deteccion de los bordes de la ventana y limita el movimiento de la nave, aun hay un bug por arreglar pero es minimo
 
@@ -55,14 +55,13 @@ void windowScene::play(){
 
                         player.Controller();
 
-
-            			std::cout<<"DENTRO DEL LIMITE"<<std::endl; 
+            			//std::cout<<"DENTRO DEL LIMITE"<<std::endl; 
  
             		}
 
                 else{
 
-                    std::cout<<"FUERA DEL LIMITE"<<std::endl; 
+                    //std::cout<<"FUERA DEL LIMITE"<<std::endl; 
                     player.setPosition(x , 405.0f);
                     
                 }
@@ -71,12 +70,14 @@ void windowScene::play(){
 
            else{ 
 
-              std::cout<<"FUERA DEL LIMITE"<<std::endl; 
+              //std::cout<<"FUERA DEL LIMITE"<<std::endl; 
                     player.setPosition(-20.0f , y);
 
            }
 
            //Termina la deteccion del borde de la pantalla
+
+           window.clear();
 
             window.draw(background); //Dibuja el fondo en la veNtana
 

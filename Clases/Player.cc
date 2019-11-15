@@ -19,13 +19,12 @@ Player::Player(){
 
 	this -> setScale(0.7f,0.7f); //reescala el sprite
 
-	/*buffer.loadFromFile("../Audio/ship.ogg");
+    buffer.loadFromFile("../Audio/efecto-de-sonido.ogg");
 
-	sound_ship.setBuffer(buffer);
+    sound_ship.setBuffer(buffer);
+    
+    sound_ship.setVolume(50.0f);
 
-	sound_ship.setLoop(true);
-
-	sound_ship.play();*/
     
 
 }
@@ -38,13 +37,16 @@ void Player::Detect_Axis(){
 
 void Player::Controller(){ //Metodo de controles
     //Inicia la deteccion de teclado y modifica la posicio inicial
-
+        
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
 	        this -> setPosition(x, y - 5.0f); //Setea la posicion haciendo efecto movimiento
 
             this -> setTexture(shipTexture3); //Carga la textura al player 
+
+            this -> Shoot();
+
 
             //Se implementa cuando el usuario presiona la tecla RSHIFT Acelera la nave es por eso el set position mas 10
 
@@ -54,20 +56,32 @@ void Player::Controller(){ //Metodo de controles
 
             this -> setTexture(shipTexture4);
 
+             this -> Shoot();
+
+
+
+
         }
 
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-        
+
         this -> setPosition(x - 5.0f, y);
         
-        this -> setTexture(shipTexture2);   
+        this -> setTexture(shipTexture2);  
+
+                    this -> Shoot();
+ 
+
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
 
             this -> setPosition(x - 10.0f, y);
 
             this -> setTexture(shipTexture4);  
+
+                        this -> Shoot();
+
          }    
     }
             		
@@ -77,11 +91,18 @@ void Player::Controller(){ //Metodo de controles
         
         this -> setTexture(shipTexture3);
 
+                    this -> Shoot();
+
+
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
 
             this -> setPosition(x, y + 10.0f);
 
             this -> setTexture(shipTexture4);  
+
+                        this -> Shoot();
+
+
          }    
 
     }
@@ -91,11 +112,17 @@ void Player::Controller(){ //Metodo de controles
         this -> setPosition(x + 5.0f, y);
         this -> setTexture(shipTexture2);   
 
+                    this -> Shoot();
+
+
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
 
             this -> setPosition(x + 10.0f, y);
 
             this -> setTexture(shipTexture4);  
+
+                        this -> Shoot();
+
          }        
 
     }
@@ -122,5 +149,16 @@ float Player::Get_axis_y(){ //Obtiene la posicion en Y
 
 void Player::Shoot(){
 
+
+     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+            sound_ship.play();
+
+             bullet.setPosition( Get_axis_x(), Get_axis_y());
+
+             bullet.setPosition(bullet.Get_axis_x() , bullet.Get_axis_y() - 10);
+
+             
+            
+            }
 
 }

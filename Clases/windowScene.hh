@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp> 
 #include <SFML/Audio.hpp>
 #include "Player.hh"
+#include "bullet.hh"
 
 
 class windowScene{
@@ -31,6 +32,8 @@ private:
 	sf::Time time;
 	
 	Player player; //Jugador
+
+	Bullet bullet;
 	
 };
 
