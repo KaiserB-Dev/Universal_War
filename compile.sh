@@ -8,11 +8,21 @@ g++ -Wall -o test  windowScene.cc main.cc Player.cc bullet.cc -lsfml-graphics -l
 
 echo "Compilacion finalizada"
 
+if [ -f test  ]; 
+	then
 echo "Ejecutando"
 
 ./test
 
+rm test
+
 cd ..
+
+else
+
+    echo  "Compilacion con errores"
+	cd ..
+fi
 
 echo "fin"
 
