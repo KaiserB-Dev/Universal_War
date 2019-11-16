@@ -21,9 +21,8 @@ class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase  
 
 		void Detect_Axis();
 
-		void Shoot();
+		void Shoot(Bullet &bullet);
 
-		void colition();
 
 	private:
 
@@ -41,9 +40,11 @@ class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase  
 
 		sf::Sound sound_ship;
 
+		//sf::Thread shoot_Process;
+
 		float x,y; //Almacenamiento de posicion
 
-		Bullet bullet;
+
 };
 	
 #endif

@@ -15,11 +15,16 @@ public:
 
 	float Get_axis_y();
 
+	void draw(sf::RenderWindow &window);
+
+	void fire(int speed,  float x, float y);
+
+
+
+
 private:
 
 	sf::Texture bullet_texture;
-
-	float speed;
 
 	sf::Clock clock;
 
@@ -28,8 +33,6 @@ private:
 	sf::Vector2f position_bullet;
 
 	float x,y;
-
-
 
 
 };

@@ -45,8 +45,6 @@ void Player::Controller(){ //Metodo de controles
 
             this -> setTexture(shipTexture3); //Carga la textura al player 
 
-            this -> Shoot();
-
 
             //Se implementa cuando el usuario presiona la tecla RSHIFT Acelera la nave es por eso el set position mas 10
 
@@ -55,11 +53,6 @@ void Player::Controller(){ //Metodo de controles
             this -> setPosition(x, y - 10.0f);
 
             this -> setTexture(shipTexture4);
-
-             this -> Shoot();
-
-
-
 
         }
 
@@ -70,7 +63,7 @@ void Player::Controller(){ //Metodo de controles
         
         this -> setTexture(shipTexture2);  
 
-                    this -> Shoot();
+
  
 
 
@@ -80,7 +73,6 @@ void Player::Controller(){ //Metodo de controles
 
             this -> setTexture(shipTexture4);  
 
-                        this -> Shoot();
 
          }    
     }
@@ -91,7 +83,6 @@ void Player::Controller(){ //Metodo de controles
         
         this -> setTexture(shipTexture3);
 
-                    this -> Shoot();
 
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
@@ -100,7 +91,6 @@ void Player::Controller(){ //Metodo de controles
 
             this -> setTexture(shipTexture4);  
 
-                        this -> Shoot();
 
 
          }    
@@ -110,10 +100,7 @@ void Player::Controller(){ //Metodo de controles
 
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
         this -> setPosition(x + 5.0f, y);
-        this -> setTexture(shipTexture2);   
-
-                    this -> Shoot();
-
+        this -> setTexture(shipTexture2);              
 
          if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
 
@@ -121,7 +108,6 @@ void Player::Controller(){ //Metodo de controles
 
             this -> setTexture(shipTexture4);  
 
-                        this -> Shoot();
 
          }        
 
@@ -130,7 +116,9 @@ void Player::Controller(){ //Metodo de controles
     else
         this -> setTexture(shipTexture);
 
-    //Termina la deteccion de teclado      		
+    //Termina la deteccion de teclado      	
+
+
 
 }
 
@@ -146,19 +134,11 @@ float Player::Get_axis_y(){ //Obtiene la posicion en Y
 
 }
 
+void Player::Shoot(Bullet &bullet){
 
-void Player::Shoot(){
+        bullet.fire(10, x , y);
 
+        sound_ship.play();
 
-     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            sound_ship.play();
-
-             bullet.setPosition( Get_axis_x(), Get_axis_y());
-
-             bullet.setPosition(bullet.Get_axis_x() , bullet.Get_axis_y() - 10);
-
-             
-            
-            }
 
 }

@@ -6,7 +6,7 @@ Bullet::Bullet(){
 
 	this -> setTexture(bullet_texture);
 
-	//this -> setScale(0.5f,0.5f);
+	this -> setScale(0.1f,0.1f);
 
 	this -> setRotation(-90.0f);
 
@@ -27,5 +27,20 @@ float 	Bullet::Get_axis_x(){
 float Bullet::Get_axis_y(){
 
 	return y;
+}
+
+
+void Bullet::draw(sf::RenderWindow &window){
+
+	window.draw(*this);
+
+}
+
+void Bullet::fire(int speed, float x, float y){
+
+	this -> setPosition(x , y);
+
+	//this ->setPosition(this -> Get_axis_x(), this -> Get_axis_y() + speed);
+
 }
 
