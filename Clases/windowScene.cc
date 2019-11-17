@@ -15,6 +15,9 @@ windowScene::windowScene(){
 	//Cicla la musica
 	back_music.setLoop(true);
 	//Reproduce la pista
+
+	back_music.setVolume(35.0f);
+
 	back_music.play();
 	//Se reinicia el clock
 	//time = clock.restart();
@@ -83,7 +86,8 @@ void windowScene::play(){
         window.draw(background);
 		//Dibuja el jugador en la ventana
         window.draw(player);
-                      		    bullet.move(sf::Vector2f(0,-20));
+        
+        bullet.move(sf::Vector2f(0,-20));
 
         bullet.draw(window);
 		//Muestra la GUI en pantalla
