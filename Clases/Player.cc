@@ -21,6 +21,7 @@ Player::Player(){
 
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(50.0f);
+
 }
 
 void Player::Detect_Axis(){
@@ -50,7 +51,7 @@ void Player::Controller(){
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != -45.0f){
+    	if(x != -40.0f){
     		this -> setPosition(x - 5.0f, y);
 	        this -> setTexture(shipTexture2);  
 	 
@@ -74,7 +75,7 @@ void Player::Controller(){
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != 475.0f){
+    	if(x != 470.0f){
     		this -> setPosition(x + 5.0f, y);
 	        this -> setTexture(shipTexture2);
 	        
@@ -105,7 +106,10 @@ float Player::Get_axis_y(){
 }
 
 void Player::Shoot(Bullet &bullet){
+    
     bullet.fire(10, x , y);
+
+
     sound_ship.play();
 }
 

@@ -36,10 +36,13 @@ void windowScene::play(){
 			//Valida el evento del boton cerrar
             if (event.type == sf::Event::Closed)
                	window.close(); //Cierra la Ventana
-        	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-                  player.Shoot(bullet);
-            }
+            
 		}
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+				player.Shoot(bullet);
+            	      
+			}
+		
 		//Detecta la pocicion del objeto en los ejes x & y
         player.Detect_Axis();
         /*std::cout << "X= "<<x<<std::endl;
@@ -70,6 +73,8 @@ void windowScene::play(){
         window.draw(background);
 		//Dibuja el jugador en la ventana
         window.draw(player);
+                      		    bullet.move(sf::Vector2f(0,-10));
+
         bullet.draw(window);
 		//Muestra la GUI en pantalla
         window.display();

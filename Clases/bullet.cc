@@ -2,6 +2,8 @@
 
 Bullet::Bullet(){
 	bullet_texture.loadFromFile("../Sprites/nave_bullet.png");
+
+	this -> setScale(0.7f,0.7f);
 	
 	//position_bullet.x = 230.0f;
 	//position_bullet.y = 380.0f;
@@ -29,8 +31,9 @@ void Bullet::draw(sf::RenderWindow &window){
 	window.draw(*this);
 }
 
-void Bullet::fire(int speed, float x, float y){
-	this -> setTexture(bullet_texture);
-	this -> setPosition(x, y + speed);
-	this -> setScale(0.7f,0.7f);
+void Bullet::fire(int speed, float x_func, float y_func){
+		this -> setTexture(bullet_texture);
+
+	    this -> setPosition(x_func,y_func);
+
 }
