@@ -30,7 +30,7 @@ void windowScene::play()
     sf::Event event; //Crea el objeto de eventos
  		x = player.Get_axis_x(); //Obtiene la posicion en X del jugador
     y = player.Get_axis_y(); //Obtiene la posicion en Y del jugador 
-  	while (window.pollEvent(event)) //loop de validacion de eventos
+    while (window.pollEvent(event)) //loop de validacion de eventos
 		{		
     	if (event.type == sf::Event::Closed) //Valida el evento del boton cerrar
     	window.close(); //Cierra la Ventana
@@ -64,6 +64,8 @@ void windowScene::play()
     window.clear();
     window.draw(background); //Dibuja el fondo en la veNtana
   	window.draw(player); //Dibuja el jugador en la ventana
+    enemy.move(sf::Vector2f(1, 1));
+    window.draw(enemy);
     bullet.draw(window);
     // window.draw(bullet);
   	window.display(); //Muestra la GUI en pantalla

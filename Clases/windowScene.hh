@@ -36,7 +36,7 @@ private:
 
 	Bullet bullet; //Balas
 	
-
+	Enemy enemy;		
 };
 
 

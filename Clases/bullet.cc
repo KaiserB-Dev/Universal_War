@@ -2,13 +2,13 @@
 
 Bullet::Bullet(){
 
-	bullet_texture.loadFromFile("../Sprites/bullet.png");
+	bullet_texture.loadFromFile("../Sprites/nave_bullet.png");
 
 	this -> setTexture(bullet_texture);
 
-	this -> setScale(0.1f,0.1f);
+//	this -> setScale(0.1f,0.1f);
 
-	this -> setRotation(-90.0f);
+	//this -> setRotation(-90.0f);
 
 }
 
