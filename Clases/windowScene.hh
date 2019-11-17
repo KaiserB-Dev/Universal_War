@@ -7,6 +7,7 @@
 #include <SFML/Audio.hpp>
 #include "Player.hh"
 #include "bullet.hh"
+#include "enemy.hh"
 
 
 class windowScene{
@@ -33,8 +34,9 @@ private:
 	
 	Player player; //Jugador
 
-	Bullet bullet;
+	Bullet bullet; //Balas
 	
+
 };
 
 
