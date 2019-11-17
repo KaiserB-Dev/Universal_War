@@ -17,7 +17,7 @@ windowScene::windowScene(){
 	//Reproduce la pista
 	back_music.play();
 	//Se reinicia el clock
-	time = clock.restart();
+	//time = clock.restart();
 }
 
 void windowScene::play(){
@@ -38,10 +38,20 @@ void windowScene::play(){
                	window.close(); //Cierra la Ventana
             
 		}
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+
+		time = clock.getElapsedTime();
+			
+		if(time.asSeconds() >= 0.5f){
+		
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){	
 				player.Shoot(bullet);
+
+				clock.restart();
+
+
             	      
 			}
+		}
 		
 		//Detecta la pocicion del objeto en los ejes x & y
         player.Detect_Axis();
@@ -73,7 +83,7 @@ void windowScene::play(){
         window.draw(background);
 		//Dibuja el jugador en la ventana
         window.draw(player);
-                      		    bullet.move(sf::Vector2f(0,-10));
+                      		    bullet.move(sf::Vector2f(0,-20));
 
         bullet.draw(window);
 		//Muestra la GUI en pantalla
