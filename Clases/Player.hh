@@ -1,50 +1,30 @@
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
+//Librerias
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "bullet.hh"
 
-
-
-class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase   Sprite que es la clase raiz para el desarrollo del character
-
+//Declaracion de la clase derivada Player heredando la clase base Sprite, que es la clase raiz para el desarrollo del character
+class Player : public sf::Sprite{
 	public:
-
 		Player();
-
 		void Controller();
-
 		float Get_axis_x();
-
 		float Get_axis_y();
-
 		void Detect_Axis();
-
 		void Shoot(Bullet &bullet);
-
-
 	private:
-
 		sf::Texture shipTexture; //Objeto que carga la textura a la nave
-
 		sf::Texture shipTexture2;
-
 		sf::Texture shipTexture3;
-
 		sf::Texture shipTexture4;
-
 		sf::Vector2f position; //Objeto posicion 
-
 		sf::SoundBuffer buffer;
-
 		sf::Sound sound_ship;
-
-		//sf::Thread shoot_Process;
-
+		Bullet bullet;
 		float x,y; //Almacenamiento de posicion
-
-
 };
 	
 #endif

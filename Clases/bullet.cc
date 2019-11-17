@@ -1,46 +1,36 @@
 #include "bullet.hh"
 
 Bullet::Bullet(){
-
-	bullet_texture.loadFromFile("../Sprites/bullet.png");
-
-	this -> setTexture(bullet_texture);
-
-	this -> setScale(0.1f,0.1f);
-
-	this -> setRotation(-90.0f);
-
+	bullet_texture.loadFromFile("../Sprites/nave_bullet.png");
+	
+	//position_bullet.x = 230.0f;
+	//position_bullet.y = 380.0f;
+	//this -> setPosition(position_bullet);
 }
-
 
 void Bullet::Detect_Axis(){
-    position_bullet = this -> getPosition(); //Obtiene la posicion del Player, retorna un objeto de tipo Vector2f 
-    x = position_bullet.x; //Almacena la posicion en X
-    y = position_bullet.y;   //Almacena la posicion en Y
+	//Obtiene la posicion del Player, retorna un objeto de tipo Vector2f
+    position_bullet = this -> getPosition(); 
+    //Almacena la posicion en X
+	x = position_bullet.x;
+	//Almacena la posicion en Y
+    y = position_bullet.y;
 }
 
-float 	Bullet::Get_axis_x(){
-	
+float Bullet::Get_axis_x(){
 	return x;
 }
 
 float Bullet::Get_axis_y(){
-
 	return y;
 }
 
-
 void Bullet::draw(sf::RenderWindow &window){
-
 	window.draw(*this);
-
 }
 
 void Bullet::fire(int speed, float x, float y){
-
-	this -> setPosition(x , y);
-
-	//this ->setPosition(this -> Get_axis_x(), this -> Get_axis_y() + speed);
-
+	this -> setTexture(bullet_texture);
+	this -> setPosition(x, y + speed);
+	this -> setScale(0.7f,0.7f);
 }
-
