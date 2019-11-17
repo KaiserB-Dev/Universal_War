@@ -31,6 +31,8 @@ private:
 	sf::Clock clock;
 
 	sf::Time time;
+
+	sf::RectangleShape frontier;
 	
 	Player player; //Jugador
 

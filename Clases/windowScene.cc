@@ -8,6 +8,12 @@ windowScene::windowScene(){
 
 	window.setVerticalSyncEnabled(true); //Impide la pantalla completa
 
+  frontier.setSize(sf::Vector2f(580.0f, 680.0f));
+  frontier.setFillColor(sf::Color::Transparent);
+  frontier.setOutlineColor(sf::Color::Red);
+  frontier.setOutlineThickness(1);
+  frontier.setPosition(10, 10);
+
 	background_tex.loadFromFile("../Sprites/Spr_Space.jpg"); //Carga el fondo de la carpeta Sprites
 
 	background.setTexture(background_tex); //Asigna la textura al objeto fondo
@@ -67,6 +73,7 @@ void windowScene::play()
     enemy.move(sf::Vector2f(1, 1));
     window.draw(enemy);
     bullet.draw(window);
+    window.draw(frontier);
     // window.draw(bullet);
   	window.display(); //Muestra la GUI en pantalla
   }

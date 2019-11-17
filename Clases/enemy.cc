@@ -10,11 +10,6 @@ Enemy::Enemy()
 	this -> setScale(0.1f,0.1f);
 }
 
-void Enemy::Movement()
-{
-	this -> setPosition(x+78, y);
-}
-
 void Enemy::Detect_Axis()
 {
     position = this -> getPosition(); //Obtiene la posicion del enemy, retorna un objeto de tipo Vector2f 
