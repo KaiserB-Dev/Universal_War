@@ -15,6 +15,7 @@ class Player : public sf::Sprite{
 		float Get_axis_y();
 		void Detect_Axis();
 		void Shoot(Bullet &bullet);
+		void damange();
 	private:
 		sf::Texture shipTexture; //Objeto que carga la textura a la nave
 		sf::Texture shipTexture2;
@@ -25,6 +26,10 @@ class Player : public sf::Sprite{
 		sf::Sound sound_ship;
 		Bullet bullet;
 		float x,y; //Almacenamiento de posicion
+
+		unsigned int health;
+
+		unsigned int lives;
 };
 	
 #endif

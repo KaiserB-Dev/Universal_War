@@ -22,6 +22,10 @@ Player::Player(){
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(100.0f);
 
+    health = 20;
+
+    lives = 3;
+
 }
 
 void Player::Detect_Axis(){
@@ -86,9 +90,9 @@ void Player::Controller(){
 	        }
 		}
     }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+   /* else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
         this -> Shoot(bullet);
-    }
+    }*/
     else
         this -> setTexture(shipTexture);
 
@@ -107,7 +111,7 @@ float Player::Get_axis_y(){
 
 void Player::Shoot(Bullet &bullet){
     
-    bullet.fire(10, x , y);
+   bullet.fire(10, x , y);
 
 
     sound_ship.play();

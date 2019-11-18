@@ -6,6 +6,7 @@
 #include <SFML/Audio.hpp>
 #include "Player.hh"
 #include "bullet.hh"
+//#include "panel.hh"
 
 class windowScene{
 public:
@@ -20,6 +21,8 @@ private:
 	sf::Time time;
 	Player player; //Jugador
 	Bullet bullet;
+
+	//sf::RectangleShape prueba;
 };
 
 #endif
