@@ -39,7 +39,7 @@ void Player::Detect_Axis(){
 void Player::Controller(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-		if(y != -195.0f){
+		if(y != -180.0f){
     		//Setea la posicion haciendo efecto movimiento
 			this -> setPosition(x, y - 5.0f);
 			//Carga la textura al player
@@ -55,7 +55,7 @@ void Player::Controller(){
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != -40.0f){
+    	if(x != -35.0f){
     		this -> setPosition(x - 5.0f, y);
 	        this -> setTexture(shipTexture2);  
 	 
@@ -79,7 +79,7 @@ void Player::Controller(){
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != 470.0f){
+    	if(x != 465.0f){
     		this -> setPosition(x + 5.0f, y);
 	        this -> setTexture(shipTexture2);
 	        

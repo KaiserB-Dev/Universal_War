@@ -67,8 +67,8 @@ void windowScene::play(){
 		
 		//Detecta la pocicion del objeto en los ejes x & y
         player.Detect_Axis();
-        /*std::cout << "X= "<<x<<std::endl;
-        std::cout << "Y= "<<y<<std::endl;*/
+        std::cout << "X= "<<x<<std::endl;
+        std::cout << "Y= "<<y<<std::endl;
 
        	if(x <= 475.0f && x >= -45.0f){
          	if(y <= 405.0f && y >= -195.0f){
