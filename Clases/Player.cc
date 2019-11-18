@@ -9,8 +9,8 @@ Player::Player(){
     this -> setTexture(shipTexture); //Carga la textura principal
 	
 	//Indica la pocicion inicial del player
-	position.x = 230.0f;
-	position.y = 380.0f;
+	position.x = 240.0f;
+	position.y = 390.0f;
 	
 	//Setea la posicion inicial en el player
 	this -> setPosition(position);
@@ -22,7 +22,7 @@ Player::Player(){
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(100.0f);
 
-    health = 20;
+    health = 30;
 
     lives = 3;
 
@@ -39,56 +39,38 @@ void Player::Detect_Axis(){
 void Player::Controller(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-		if(y != -180.0f){
+		if(y != -190.0f){
     		//Setea la posicion haciendo efecto movimiento
-			this -> setPosition(x, y - 5.0f);
+			this -> setPosition(x, y - 10.0f);
 			//Carga la textura al player
-	        this -> setTexture(shipTexture3); 
-	
-	        //Se implementa cuando el usuario presiona la tecla RSHIFT Acelera la nave, es por eso el set position mas 10
-	        //Victor: Bug: Al usar el speed, atraviesa la barrera delimitadora. Quitando el speed se soluciona el bug.
-	        if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-	            this -> setPosition(x, y - 10.0f);
-	            this -> setTexture(shipTexture4);
-	        }
+	        this -> setTexture(shipTexture4); 
+
 		}
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != -35.0f){
-    		this -> setPosition(x - 5.0f, y);
-	        this -> setTexture(shipTexture2);  
+    	if(x != -40.0f){
+    		this -> setPosition(x - 10.0f, y);
+	        this -> setTexture(shipTexture3);  
 	 
-	        if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-	            this -> setPosition(x - 10.0f, y);
-	            this -> setTexture(shipTexture4);
 	        }
 		}
-    }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(y != 405.0f){
-    		this -> setPosition(x, y + 5.0f);
-	        this -> setTexture(shipTexture3);
+    	if(y != 400.0f){
+    		this -> setPosition(x, y + 10.0f);
+	        this -> setTexture(shipTexture4);
 	
-	        if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-	            this -> setPosition(x, y + 10.0f);
-	            this -> setTexture(shipTexture4);
 	        }
 		}
-    }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != 465.0f){
-    		this -> setPosition(x + 5.0f, y);
-	        this -> setTexture(shipTexture2);
+    	if(x != 470.0f){
+    		this -> setPosition(x + 10.0f, y);
+	        this -> setTexture(shipTexture3);
 	        
-	        //Victor: Bug: Al usar el speed, atraviesa la barrera delimitadora. Quitando el speed se soluciona el bug.
-	        if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-	        	this -> setPosition(x + 10.0f, y);
-	            this -> setTexture(shipTexture4);
+	    
 	        }
-		}
     }
    /* else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
         this -> Shoot(bullet);
