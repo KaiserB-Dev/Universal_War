@@ -8,12 +8,6 @@ windowScene::windowScene(){
 
 	window.setVerticalSyncEnabled(true); //Impide la pantalla completa
 
-  frontier.setSize(sf::Vector2f(580.0f, 680.0f));
-  frontier.setFillColor(sf::Color::Transparent);
-  frontier.setOutlineColor(sf::Color::Red);
-  frontier.setOutlineThickness(1);
-  frontier.setPosition(10, 10);
-
 	background_tex.loadFromFile("../Sprites/Spr_Space.jpg"); //Carga el fondo de la carpeta Sprites
 
 	background.setTexture(background_tex); //Asigna la textura al objeto fondo
@@ -25,14 +19,22 @@ windowScene::windowScene(){
 	back_music.play(); //Reproduce la pista
 
 	time = clock.restart(); //sreinicia el clock
+
+  enemySpawnTimerMax = 15.0f;
+
+  enemySpawnTimer = 0.0f;
+
+  maxEnemies = 10;
 }
 	
 
 void windowScene::play()
 {
-	int x,y; 
+	std::srand(static_cast<unsigned>(std::time(NULL)));
+  int x,y; 
 	while (window.isOpen()) //Inicia el loop de la ventana siempre que la ventana este abierta		
 	{
+    window.setFramerateLimit(60);
     sf::Event event; //Crea el objeto de eventos
  		x = player.Get_axis_x(); //Obtiene la posicion en X del jugador
     y = player.Get_axis_y(); //Obtiene la posicion en Y del jugador 
@@ -66,14 +68,41 @@ void windowScene::play()
       //std::cout<<"FUERA DEL LIMITE"<<std::endl; 
       player.setPosition(-20.0f , y);
     }
+
+
+    if (this->enemies.size() < this->maxEnemies)
+    {
+      if (this->enemySpawnTimer >= this->enemySpawnTimerMax)
+      {
+        //Spawn the enemy and reset the timer
+        this->enemy.setPosition(static_cast<float>(rand() % static_cast<int>(window.getSize().x - 27.0f)),0.f);
+        this->enemies.push_back(this->enemy);
+        this->enemySpawnTimer = 0.f;
+      }
+      else
+        this->enemySpawnTimer += 1.f;
+    }
+    for (int i = 0; i < this->enemies.size(); i++)
+    {
+      bool deleted = false;
+
+      this->enemies[i].move(0.f, 5.f);
+
+      if (this->enemies[i].getPosition().y > window.getSize().y)
+      {
+        this->enemies.erase(this->enemies.begin() + i);
+      }
+    }
+
     //Termina la deteccion del borde de la pantalla
     window.clear();
     window.draw(background); //Dibuja el fondo en la veNtana
-  	window.draw(player); //Dibuja el jugador en la ventana
-    enemy.move(sf::Vector2f(1, 1));
+  	window.draw(player); //Dibuja el jugador en la veNtana
     window.draw(enemy);
-    bullet.draw(window);
-    window.draw(frontier);
+    for (auto &e : this->enemies)
+    {
+      window.draw(e);
+    }
     // window.draw(bullet);
   	window.display(); //Muestra la GUI en pantalla
   }

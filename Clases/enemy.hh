@@ -8,10 +8,6 @@ class Enemy : public sf::Sprite
 {
 	public:
 		Enemy();
-		float Get_axis_x();
-		float Get_axis_y();
-		void Detect_Axis();	
-		void Movement();
 	private:
 		sf::Texture	enemy_texture;
 		sf::Vector2f position;

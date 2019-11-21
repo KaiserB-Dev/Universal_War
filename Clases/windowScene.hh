@@ -3,6 +3,8 @@
 
 //Librerias, la que se usa es la SFML
 
+#include <vector>
+#include <ctime>
 #include <SFML/Graphics.hpp> 
 #include <SFML/Audio.hpp>
 #include "Player.hh"
@@ -30,9 +32,13 @@ private:
 
 	sf::Clock clock;
 
-	sf::Time time;
+	sf::Time time;		
 
-	sf::RectangleShape frontier;
+	std::vector<Enemy> enemies;
+
+	float enemySpawnTimer;
+	float enemySpawnTimerMax;
+	int maxEnemies;
 	
 	Player player; //Jugador
 
