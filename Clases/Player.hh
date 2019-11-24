@@ -3,35 +3,47 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include "bullet.hh"
 
 
 
-class Player : public sf::Sprite{
+class Player : public sf::Sprite{ //Declaracion de la clase heredando la clase   Sprite que es la clase raiz para el desarrollo del character
 
-public:
+	public:
 
-Player();
+		Player();
 
-void Controller();
+		void Controller();
 
-float Get_axis_x();
+		float Get_axis_x();
 
-float Get_axis_y();
+		float Get_axis_y();
 
-private:
+		void Detect_Axis();
 
-	sf::Texture shipTexture;
+		void Shoot();
 
-	sf::Vector2f position;
+		void colition();
 
-	//sf::SoundBuffer buffer;
+	private:
 
-	//sf::Sound sound_ship;
+		sf::Texture shipTexture; //Objeto que carga la textura a la nave
 
-	float x,y;
+		sf::Texture shipTexture2;
 
+		sf::Texture shipTexture3;
 
+		sf::Texture shipTexture4;
 
+		sf::Vector2f position; //Objeto posicion 
+
+		sf::SoundBuffer buffer;
+
+		sf::Sound sound_ship;
+
+		float x,y; //Almacenamiento de posicion
+
+		Bullet bullet;
 };
 	
 #endif

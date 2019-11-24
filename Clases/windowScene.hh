@@ -1,9 +1,12 @@
 #ifndef WIN_SCENE_HH
 #define WIN_SCENE_HH
 
-#include <SFML/Graphics.hpp>
+//Librerias, la que se usa es la SFML
+
+#include <SFML/Graphics.hpp> 
 #include <SFML/Audio.hpp>
 #include "Player.hh"
+#include "bullet.hh"
 
 
 class windowScene{
@@ -16,15 +19,21 @@ public:
 
 private:
 
-	sf::RenderWindow window;
+	sf::RenderWindow window; //Objeto de la ventana
 	
-	sf::Texture background_tex;
+	sf::Texture background_tex; //Textura del fondo
 
-	sf::Sprite background;
+	sf::Sprite background; //Objeto del fondo para cargar su textura
 
-	sf::Music back_music;
+	sf::Music back_music; //Musica
+
+	sf::Clock clock;
+
+	sf::Time time;
 	
-	Player player;
+	Player player; //Jugador
+
+	Bullet bullet;
 	
 };
 

@@ -1,0 +1,49 @@
+# Project: Proyecto1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = bullet.o main.o Player.o windowScene.o base.o enemy.o lifes.o score.o
+LINKOBJ  = bullet.o main.o Player.o windowScene.o base.o enemy.o lifes.o score.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/SFML-2.4.2/lib" -mwindows -lsfml-audio -lsfml-graphics -lsfml-system -lsfml-window
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/SFML-2.4.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/SFML-2.4.2/include"
+BIN      = Proyecto.exe
+CXXFLAGS = $(CXXINCS) -std=gnu++11 -std=c++14
+CFLAGS   = $(INCS) -std=gnu++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+bullet.o: bullet.cc
+	$(CPP) -c bullet.cc -o bullet.o $(CXXFLAGS)
+
+main.o: main.cc
+	$(CPP) -c main.cc -o main.o $(CXXFLAGS)
+
+Player.o: Player.cc
+	$(CPP) -c Player.cc -o Player.o $(CXXFLAGS)
+
+windowScene.o: windowScene.cc
+	$(CPP) -c windowScene.cc -o windowScene.o $(CXXFLAGS)
+
+base.o: base.cc
+	$(CPP) -c base.cc -o base.o $(CXXFLAGS)
+
+enemy.o: enemy.cc
+	$(CPP) -c enemy.cc -o enemy.o $(CXXFLAGS)
+
+lifes.o: lifes.cc
+	$(CPP) -c lifes.cc -o lifes.o $(CXXFLAGS)
+
+score.o: score.cc
+	$(CPP) -c score.cc -o score.o $(CXXFLAGS)
