@@ -4,9 +4,13 @@
 //Librerias, la que se usa es la SFML
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <vector>
+#include <ctime>
 #include "Player.hh"
 #include "bullet.hh"
-//#include "panel.hh"
+#include "lifes.hh"
+#include "score.hh"
+#include "enemy.hh"
 
 class windowScene{
 public:
@@ -19,10 +23,15 @@ private:
 	sf::Music back_music; //Musica
 	sf::Clock clock;
 	sf::Time time;
+	std::vector<Enemy> enemies;
+	float enemySpawnTimer;
+	float enemySpawnTimerMax;
+	int maxEnemies;
 	Player player; //Jugador
 	Bullet bullet;
-
-	//sf::RectangleShape prueba;
+	Lifes lifes;
+	Score score;
+	Enemy enemy;
 };
 
 #endif

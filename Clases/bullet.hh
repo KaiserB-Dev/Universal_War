@@ -1,8 +1,9 @@
-#ifndef BULLET_HH	
+#ifndef BULLET_HH
 #define BULLET_HH
 
 //Librerias
 #include <SFML/Graphics.hpp>
+#include "enemy.hh"
 
 class Bullet : public sf::Sprite{
 public:
@@ -11,7 +12,8 @@ public:
 	float Get_axis_x();
 	float Get_axis_y();
 	void draw(sf::RenderWindow &window);
-	void fire(int speed,  float x, float y);
+	void fire(float x_func, float y_func);
+	bool collide_Enemy(Enemy enemy);
 private:
 	sf::Texture bullet_texture;
 	sf::Clock clock;

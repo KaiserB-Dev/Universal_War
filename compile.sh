@@ -4,7 +4,9 @@ echo "Compilando..."
 
 cd Clases/
 
-g++ -Wall -o test windowScene.cc main.cc Player.cc bullet.cc -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+g++ -Wall -o test  windowScene.cc main.cc Player.cc bullet.cc enemy.cc lifes.cc score.cc   -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+
 
 echo "Compilacion finalizada"
 

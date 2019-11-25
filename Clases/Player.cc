@@ -1,16 +1,15 @@
 #include "Player.hh"
 
 Player::Player(){
-    shipTexture.loadFromFile("../Sprites/space_playerModel1.png");
-    shipTexture2.loadFromFile("../Sprites/space_playerModel2.png");
-    shipTexture3.loadFromFile("../Sprites/space_playerModel3.png");
-    shipTexture4.loadFromFile("../Sprites/space_playerModel4.png");
+    shipTexture1.loadFromFile("../Sprites/player_model1.png");
+    shipTexture2.loadFromFile("../Sprites/player_model2.png");
+    shipTexture3.loadFromFile("../Sprites/player_model3.png");
 
-    this -> setTexture(shipTexture); //Carga la textura principal
+    this -> setTexture(shipTexture1); //Carga la textura principal
 	
 	//Indica la pocicion inicial del player
-	position.x = 240.0f;
-	position.y = 390.0f;
+	position.x = 260.0f;
+	position.y = 560.0f;
 	
 	//Setea la posicion inicial en el player
 	this -> setPosition(position);
@@ -21,11 +20,7 @@ Player::Player(){
 
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(100.0f);
-
-    health = 30;
-
-    lives = 3;
-
+    lifes = 0;
 }
 
 void Player::Detect_Axis(){
@@ -39,44 +34,36 @@ void Player::Detect_Axis(){
 void Player::Controller(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-		if(y != -190.0f){
+		if(y != -20.0f){
     		//Setea la posicion haciendo efecto movimiento
 			this -> setPosition(x, y - 10.0f);
 			//Carga la textura al player
-	        this -> setTexture(shipTexture4); 
-
+	        this -> setTexture(shipTexture3);
 		}
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != -40.0f){
+    	if(x != 0.0f){
     		this -> setPosition(x - 10.0f, y);
-	        this -> setTexture(shipTexture3);  
-	 
-	        }
+	        this -> setTexture(shipTexture2);
 		}
+    }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(y != 400.0f){
+    	if(y != 570.0f){
     		this -> setPosition(x, y + 10.0f);
-	        this -> setTexture(shipTexture4);
-	
-	        }
+	        this -> setTexture(shipTexture3);
 		}
+    }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
     	//Condicion para que el jugador no pueda ir a una zona delimitada
-    	if(x != 470.0f){
+    	if(x != 500.0f){
     		this -> setPosition(x + 10.0f, y);
-	        this -> setTexture(shipTexture3);
-	        
-	    
-	        }
+	        this -> setTexture(shipTexture2);
+		}
     }
-   /* else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-        this -> Shoot(bullet);
-    }*/
     else
-        this -> setTexture(shipTexture);
+        this -> setTexture(shipTexture1);
 
     //Termina la deteccion de teclado
 }
@@ -92,10 +79,31 @@ float Player::Get_axis_y(){
 }
 
 void Player::Shoot(Bullet &bullet){
-    
-   bullet.fire(10, x , y);
-
-
+    bullet.fire(x , y);
     sound_ship.play();
 }
 
+void Player::draw_Player(sf::RenderWindow &window){
+	window.draw(*this);
+}
+
+bool Player::collide_Enemy(Enemy enemy){
+	if(this->getGlobalBounds().intersects(enemy.getGlobalBounds())){
+        
+       return true;
+
+	}
+	return false;
+}
+
+unsigned Player::get_lifes(){
+
+    return lifes;
+
+}
+
+void Player::set_lifes(unsigned valor){
+
+    this -> lifes = valor;
+
+}

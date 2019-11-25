@@ -1,10 +1,8 @@
 #include "bullet.hh"
 
 Bullet::Bullet(){
-	bullet_texture.loadFromFile("../Sprites/nave_bullet.png");
-
+	bullet_texture.loadFromFile("../Sprites/player_bullet.png");
 	this -> setScale(0.7f,0.7f);
-	
 	//position_bullet.x = 230.0f;
 	//position_bullet.y = 380.0f;
 	//this -> setPosition(position_bullet);
@@ -31,9 +29,14 @@ void Bullet::draw(sf::RenderWindow &window){
 	window.draw(*this);
 }
 
-void Bullet::fire(int speed, float x_func, float y_func){
-		this -> setTexture(bullet_texture);
+void Bullet::fire(float x_func, float y_func){
+	this -> setTexture(bullet_texture);
+	this -> setPosition(x_func + 31.0f, y_func);
+}
 
-	    this -> setPosition(x_func,y_func);
-
+bool Bullet::collide_Enemy(Enemy enemy){
+	if(this->getGlobalBounds().intersects(enemy.getGlobalBounds())){
+		return true;
+	}
+	return false;
 }
