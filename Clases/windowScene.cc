@@ -90,7 +90,7 @@ void windowScene::play(){
         		this -> enemySpawnTimer = 0.0f;
 			}
 			else
-				this -> enemySpawnTimer += 1.0f;
+				this -> enemySpawnTimer += 2.5f;
 		}
 		
 		for(unsigned i = 0; i < this -> enemies.size(); ++i){
@@ -102,15 +102,20 @@ void windowScene::play(){
 				score.setScore(10);
 			}
 
-			if(player.collide_Enemy(this->enemies[i])){
+			 if(player.collide_Enemy(this->enemies[i])){
 
-				lifes.setLifes(1);
+				lifes.setLifes(1);	
+
 			}
-
 			
 			if(this->enemies[i].getPosition().y > window.getSize().y)
 				this -> enemies.erase(this -> enemies.begin() + i);
 		}
+
+		if(lifes.getLifes() <= 0){
+				break;
+				
+			}
 		//Termina la deteccion del borde de la pantalla
 		window.clear();
 		//Dibuja el fondo en la ventana

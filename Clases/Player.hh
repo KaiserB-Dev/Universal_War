@@ -18,8 +18,8 @@ class Player : public sf::Sprite{
 		void Detect_Axis();
 		void Shoot(Bullet &bullet);
 		bool collide_Enemy(Enemy enemy);
-		unsigned get_lifes();
-		void set_lifes(unsigned valor);
+		int get_lifes();
+		void set_lifes(int valor);
 	private:
 		sf::Texture shipTexture1; //Objeto que carga la textura a la nave
 		sf::Texture shipTexture2;
@@ -29,7 +29,7 @@ class Player : public sf::Sprite{
 		sf::Sound sound_ship;
 		Bullet bullet;
 		float x,y; //Almacenamiento de posicion
-		unsigned lifes;
+		int lifes;
 };
 	
 #endif

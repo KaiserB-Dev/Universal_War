@@ -96,13 +96,13 @@ bool Player::collide_Enemy(Enemy enemy){
 	return false;
 }
 
-unsigned Player::get_lifes(){
+int Player::get_lifes(){
 
     return lifes;
 
 }
 
-void Player::set_lifes(unsigned valor){
+void Player::set_lifes(int valor){
 
     this -> lifes = valor;
 

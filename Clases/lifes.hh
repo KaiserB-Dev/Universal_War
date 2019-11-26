@@ -11,14 +11,16 @@ public:
 	Lifes();
 	void draw(sf::RenderWindow &window);
 
-	void setLifes(unsigned valor);
+	void setLifes(int valor);
+
+	int getLifes();
 private:
 	sf::Font font;
 	sf::Text text_lifes;
 	//sf::Text text_score;
 	std::ostringstream s_lifes;
 	//std::ostringstream s_score;
-	unsigned lifes;
+	int lifes;
 
 	Player player;
 	//unsigned score;
