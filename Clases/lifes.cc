@@ -23,10 +23,19 @@ void Lifes::setLifes(int valor){
 
 	lifes -= valor;
 	player.set_lifes(player.get_lifes()-valor);
-	std::cout<<player.get_lifes()<<std::endl;
 	s_lifes.str("");
 	s_lifes << "Health: " << lifes;
 	this->setString(s_lifes.str() + "%");
+
+}
+
+void Lifes::setInitialLifes(unsigned valor){
+
+	lifes = valor;
+	s_lifes.str("");
+	s_lifes << "Health" << lifes;
+	this ->setString(s_lifes.str() + "%");
+
 
 }
 

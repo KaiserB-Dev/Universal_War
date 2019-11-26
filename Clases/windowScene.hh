@@ -32,6 +32,9 @@ private:
 	Lifes lifes;
 	Score score;
 	Enemy enemy;
+	sf::Sound explosion;
+	sf::SoundBuffer buffer;
+
 };
 
 #endif

@@ -27,7 +27,6 @@ void Enemy::enemy_move(sf::RenderWindow &window){
 	}
 	
 	for(unsigned i = 0; i < enemies.size(); ++i){
-		bool deleted = false;
 		enemies[i].move(0.0f,5.0f);
 		
 		if(enemies[i].getPosition().y > window.getSize().y)

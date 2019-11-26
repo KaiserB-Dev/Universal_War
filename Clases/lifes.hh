@@ -13,6 +13,9 @@ public:
 
 	void setLifes(int valor);
 
+	void setInitialLifes(unsigned valor);
+
+
 	int getLifes();
 private:
 	sf::Font font;

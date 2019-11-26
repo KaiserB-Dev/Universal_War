@@ -19,7 +19,7 @@ Player::Player(){
     buffer.loadFromFile("../Audio/efecto-de-sonido.ogg");
 
     sound_ship.setBuffer(buffer);
-    sound_ship.setVolume(100.0f);
+    sound_ship.setVolume(50.0f);
     lifes = 0;
 }
 

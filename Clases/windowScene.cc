@@ -12,12 +12,16 @@ windowScene::windowScene(){
 	//Asigna la textura al objeto fondo
 	background.setTexture(background_tex);
 	//Carga al objeto el archivo de audio
-	back_music.openFromFile("../Audio/soundtrack.ogg");
+	back_music.openFromFile("../Audio/back_audio.ogg");
 	//Cicla la musica
 	back_music.setLoop(true);
 	//Reproduce la pista y ajusta el volumen
-	back_music.setVolume(35.0f);
+	back_music.setVolume(100.0f);
+
 	back_music.play();
+
+	explosion.setBuffer(buffer);
+
 	//Se reinicia el clock
 	//time = clock.restart();
 	
@@ -25,6 +29,9 @@ windowScene::windowScene(){
 	enemySpawnTimerMax = 15;
 	enemySpawnTimer = 0;
 	maxEnemies = 5;
+
+	buffer.loadFromFile("../Audio/explosion.ogg");
+
 }
 
 void windowScene::play(){
@@ -43,18 +50,18 @@ void windowScene::play(){
 		//Loop de validacion de eventos
        	while (window.pollEvent(event)){
 			//Valida el evento del boton cerrar
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
                	window.close(); //Cierra la Ventana
-        	//else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            //      player.Shoot(bullet);
-            //}
+        	
 		}
 		time = clock.getElapsedTime();
 		
 		if(time.asSeconds() >= 0.5f){
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+				if(lifes.getLifes() > 0)
                 player.Shoot(bullet);
                 clock.restart();
+
             }
 		}
 		//Detecta la pocicion del objeto en los ejes x & y
@@ -68,8 +75,8 @@ void windowScene::play(){
 
        	if(x <= 505.0f && x >= -5.0f){
          	if(y <= 575.0f && y >= -25.0f){
-                //Invoca el metodo controller
-				player.Controller();
+                if(lifes.getLifes() > 0)
+					player.Controller();
 				//std::cout<<"DENTRO DEL LIMITE"<<std::endl; 
             }
         	else{
@@ -94,28 +101,43 @@ void windowScene::play(){
 		}
 		
 		for(unsigned i = 0; i < this -> enemies.size(); ++i){
-			bool deleted = false;
 			this -> enemies[i].move(0.0f,5.0f);
 			
 			if(bullet.collide_Enemy(this->enemies[i])){
 				this->enemies[i].setPosition(1000.0f, 1000.0f);	
 				score.setScore(10);
-			}
-
-			 if(player.collide_Enemy(this->enemies[i])){
-
-				lifes.setLifes(1);	
 
 			}
+
+			
 			
 			if(this->enemies[i].getPosition().y > window.getSize().y)
 				this -> enemies.erase(this -> enemies.begin() + i);
-		}
+		
 
 		if(lifes.getLifes() <= 0){
-				break;
-				
+
+				player.setColor(sf::Color::Red);
+
+				window.clear();
+
+				back_music.stop();
+
+				lifes.setString("GAME OVER: Presione Esc para salir");
+
+				lifes.setPosition(120.0f, 350.0f);
+
 			}
+
+		else{
+			 if(player.collide_Enemy(this->enemies[i]))
+				lifes.setLifes(1);	
+
+
+
+
+			}
+		}
 		//Termina la deteccion del borde de la pantalla
 		window.clear();
 		//Dibuja el fondo en la ventana
