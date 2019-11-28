@@ -3,9 +3,7 @@
 Bullet::Bullet(){
 	bullet_texture.loadFromFile("../Sprites/player_bullet.png");
 	this -> setScale(0.7f,0.7f);
-	//position_bullet.x = 230.0f;
-	//position_bullet.y = 380.0f;
-	//this -> setPosition(position_bullet);
+	
 }
 
 void Bullet::Detect_Axis(){

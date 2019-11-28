@@ -1,5 +1,4 @@
 #include "lifes.hh"
-#include <iostream>
 
 Lifes::Lifes(){
 	player.set_lifes(100);

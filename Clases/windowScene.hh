@@ -26,7 +26,7 @@ private:
 	std::vector<Enemy> enemies;
 	float enemySpawnTimer;
 	float enemySpawnTimerMax;
-	int maxEnemies;
+	long unsigned int maxEnemies;
 	Player player; //Jugador
 	Bullet bullet;
 	Lifes lifes;
@@ -34,6 +34,8 @@ private:
 	Enemy enemy;
 	sf::Sound explosion;
 	sf::SoundBuffer buffer;
+	sf::Music death;
+	bool isListening;
 
 };
 

@@ -20,7 +20,7 @@ Player::Player(){
 
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(50.0f);
-    lifes = 0;
+    lifes = 0; //Inicializacion de vidas
 }
 
 void Player::Detect_Axis(){

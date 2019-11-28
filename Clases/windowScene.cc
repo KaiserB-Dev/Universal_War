@@ -11,6 +11,8 @@ windowScene::windowScene(){
 	background_tex.loadFromFile("../Sprites/Spr_Space.jpg");
 	//Asigna la textura al objeto fondo
 	background.setTexture(background_tex);
+
+	death.openFromFile("../Audio/death_theme.ogg");
 	//Carga al objeto el archivo de audio
 	back_music.openFromFile("../Audio/back_audio.ogg");
 	//Cicla la musica
@@ -20,7 +22,10 @@ windowScene::windowScene(){
 
 	back_music.play();
 
+	isListening = true;
+
 	explosion.setBuffer(buffer);
+
 
 	//Se reinicia el clock
 	//time = clock.restart();
@@ -32,11 +37,16 @@ windowScene::windowScene(){
 
 	buffer.loadFromFile("../Audio/explosion.ogg");
 
+
+
 }
 
 void windowScene::play(){
 	int x,y;
 	std::srand(static_cast<unsigned>(std::time(nullptr)));
+
+
+
 	
 	//Inicia el loop de la ventana siempre que la ventana este abierta
 	while (window.isOpen()){
@@ -51,9 +61,16 @@ void windowScene::play(){
        	while (window.pollEvent(event)){
 			//Valida el evento del boton cerrar
             if (event.type == sf::Event::Closed || event.key.code == sf::Keyboard::Escape)
-               	window.close(); //Cierra la Ventana
-        	
-		}
+               	window.close();
+
+               if(!isListening){
+
+    		death.play();
+    	}
+    	
+        }
+               	 //Cierra la Ventana
+ 	
 		time = clock.getElapsedTime();
 		
 		if(time.asSeconds() >= 0.5f){
@@ -66,26 +83,18 @@ void windowScene::play(){
 		}
 		//Detecta la pocicion del objeto en los ejes x & y
         player.Detect_Axis();
-        //std::cout << "X= "<<x<<std::endl;
-        //std::cout << "Y= "<<y<<std::endl;
-		//Nota: Las condiciones implementadas permiten hacer
-		//la deteccion de los bordes de la ventana y limita
-		//el movimiento de la nave, aun hay un bug por
-		//arreglar pero es minimo.
+		
 
        	if(x <= 505.0f && x >= -5.0f){
          	if(y <= 575.0f && y >= -25.0f){
                 if(lifes.getLifes() > 0)
 					player.Controller();
-				//std::cout<<"DENTRO DEL LIMITE"<<std::endl; 
             }
         	else{
-				//std::cout<<"FUERA DEL LIMITE"<<std::endl; 
                 player.setPosition(x , 575.0f);   
             }
         }
 		else{ 
-        	//std::cout<<"FUERA DEL LIMITE"<<std::endl; 
             player.setPosition(-5.0f , y);
         }
         
@@ -102,6 +111,7 @@ void windowScene::play(){
 		
 		for(unsigned i = 0; i < this -> enemies.size(); ++i){
 			this -> enemies[i].move(0.0f,5.0f);
+
 			
 			if(bullet.collide_Enemy(this->enemies[i])){
 				this->enemies[i].setPosition(1000.0f, 1000.0f);	
@@ -114,6 +124,7 @@ void windowScene::play(){
 			if(this->enemies[i].getPosition().y > window.getSize().y)
 				this -> enemies.erase(this -> enemies.begin() + i);
 		
+		//Condicion de vidas al terminar
 
 		if(lifes.getLifes() <= 0){
 
@@ -127,14 +138,14 @@ void windowScene::play(){
 
 				lifes.setPosition(120.0f, 350.0f);
 
+				isListening = false;
+
+
 			}
 
 		else{
 			 if(player.collide_Enemy(this->enemies[i]))
 				lifes.setLifes(1);	
-
-
-
 
 			}
 		}
@@ -148,7 +159,6 @@ void windowScene::play(){
 		window.draw(enemy);
         for(auto &e : this->enemies)
 			window.draw(e);
-		//enemy.enemy_move(window);
     	lifes.draw(window);
     	score.draw(window);
         //Movimiento y velocidad de la bala
@@ -158,7 +168,6 @@ void windowScene::play(){
 		//Muestra la GUI en pantalla
         window.display();
 
-
     }
-
+    
 }
