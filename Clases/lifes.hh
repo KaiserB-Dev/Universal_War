@@ -10,23 +10,15 @@ class Lifes : public sf::Text{
 public:
 	Lifes();
 	void draw(sf::RenderWindow &window);
-
 	void setLifes(int valor);
-
 	void setInitialLifes(unsigned valor);
-
-
 	int getLifes();
 private:
 	sf::Font font;
 	sf::Text text_lifes;
-	//sf::Text text_score;
 	std::ostringstream s_lifes;
-	//std::ostringstream s_score;
-	int lifes;
-
+	unsigned lifes;
 	Player player;
-	//unsigned score;
 };
 
 #endif

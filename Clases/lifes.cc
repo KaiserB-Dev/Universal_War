@@ -1,8 +1,9 @@
 #include "lifes.hh"
 
 Lifes::Lifes(){
-	player.set_lifes(100);
-	lifes = player.get_lifes();
+	player.set_Lifes(100);
+	lifes = player.get_Lifes();
+	
 	font.loadFromFile("../Fonts/Sansation-Regular.ttf");
 	
 	s_lifes << "Health: " << lifes;
@@ -18,28 +19,21 @@ void Lifes::draw(sf::RenderWindow &window){
 }
 
 void Lifes::setLifes(int valor){
-	lifes = player.get_lifes();
-
+	lifes = player.get_Lifes();
 	lifes -= valor;
-	player.set_lifes(player.get_lifes()-valor);
+	player.set_Lifes(player.get_Lifes()-valor);
 	s_lifes.str("");
 	s_lifes << "Health: " << lifes;
 	this->setString(s_lifes.str() + "%");
-
 }
 
 void Lifes::setInitialLifes(unsigned valor){
-
 	lifes = valor;
 	s_lifes.str("");
-	s_lifes << "Health" << lifes;
+	s_lifes << "Health: " << lifes;
 	this ->setString(s_lifes.str() + "%");
-
-
 }
 
 int Lifes::getLifes(){
-
 	return lifes;
-
 }

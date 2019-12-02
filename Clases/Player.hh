@@ -13,13 +13,13 @@ class Player : public sf::Sprite{
 		Player();
 		void draw_Player(sf::RenderWindow &window);
 		void Controller();
+		void Detect_Axis();
 		float Get_axis_x();
 		float Get_axis_y();
-		void Detect_Axis();
 		void Shoot(Bullet &bullet);
 		bool collide_Enemy(Enemy enemy);
-		int get_lifes();
-		void set_lifes(int valor);
+		int get_Lifes();
+		void set_Lifes(int valor);
 	private:
 		sf::Texture shipTexture1; //Objeto que carga la textura a la nave
 		sf::Texture shipTexture2;

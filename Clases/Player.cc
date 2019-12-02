@@ -20,7 +20,8 @@ Player::Player(){
 
     sound_ship.setBuffer(buffer);
     sound_ship.setVolume(50.0f);
-    lifes = 0; //Inicializacion de vidas
+    
+    lifes = 0;
 }
 
 void Player::Detect_Axis(){
@@ -64,8 +65,6 @@ void Player::Controller(){
     }
     else
         this -> setTexture(shipTexture1);
-
-    //Termina la deteccion de teclado
 }
 
 //Obtiene la posicion en X
@@ -89,21 +88,15 @@ void Player::draw_Player(sf::RenderWindow &window){
 
 bool Player::collide_Enemy(Enemy enemy){
 	if(this->getGlobalBounds().intersects(enemy.getGlobalBounds())){
-        
-       return true;
-
+		return true;
 	}
 	return false;
 }
 
-int Player::get_lifes(){
-
-    return lifes;
-
+int Player::get_Lifes(){
+	return lifes;
 }
 
-void Player::set_lifes(int valor){
-
-    this -> lifes = valor;
-
+void Player::set_Lifes(int valor){
+	this -> lifes = valor;
 }
