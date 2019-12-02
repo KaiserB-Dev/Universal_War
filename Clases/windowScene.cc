@@ -7,6 +7,9 @@ windowScene::windowScene(){
 	//Asigna la textura al objeto fondo
 	background.setTexture(background_tex);
 	
+	buffer.loadFromFile("../Audio/explosion.ogg");
+
+
 	death.openFromFile("../Audio/death_theme.ogg");
 	//Carga al objeto el archivo de audio
 	back_music.openFromFile("../Audio/back_audio.ogg");
@@ -17,13 +20,15 @@ windowScene::windowScene(){
 	back_music.play();
 	isListening = true;
 	explosion.setBuffer(buffer);
+	explosion.setVolume(50.0f);
 	
 	//Inicialización de Variables para los Enemigos
 	enemySpawnTimerMax = 15;
 	enemySpawnTimer = 0;
 	maxEnemies = 5;
 	
-	buffer.loadFromFile("../Audio/explosion.ogg");
+
+
 }
 
 //Funcion para mostrar el juego
@@ -90,7 +95,22 @@ void windowScene::play(sf::RenderWindow &window){
 		//Acciones de los Enemigos
 		for(unsigned i = 0; i < this -> enemies.size(); ++i){
 			//Movimiento de los Enemigos
-			this -> enemies[i].move(0.0f,5.0f);
+			if(score.getScore() >= 0 && score.getScore() <= 4000)
+				this -> enemies[i].move(0.0f,5.0f);
+
+			if(score.getScore() >= 4000 && score.getScore() <= 12000){
+			enemy.enemy_sprite("../Sprites/alien_amarillo1.png");
+				this -> enemies[i].move(0.0f,7.0f);
+		}
+
+
+			if(score.getScore() >= 12000){
+
+				enemy.enemy_sprite("../Sprites/alien_morado1.png");
+				this -> enemies[i].move(0.0f,9.0f);
+
+			}
+
 			
 			//Si la bala del jugador toca a un enemigo, este es "eliminado"
 			if(bullet.collide_Enemy(this->enemies[i])){
@@ -101,6 +121,8 @@ void windowScene::play(sf::RenderWindow &window){
 			
 			if(this->enemies[i].getPosition().y > window.getSize().y)
 				this -> enemies.erase(this -> enemies.begin() + i);
+					
+			
 				
 			if(lifes.getLifes() <= 0){
 				player.setColor(sf::Color::Red);
@@ -109,23 +131,26 @@ void windowScene::play(sf::RenderWindow &window){
 				lifes.setString("GAME OVER: Presione Esc para salir");
 				lifes.setPosition(120.0f, 350.0f);
 				isListening = false;
+
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
 					death.stop();
 					
 					Menu menu;
 					menu.run(window);
-					
-					delete this;
-					
+
 				}
 			}
 			else{
 				if(player.collide_Enemy(this->enemies[i])){
 					this -> enemies.erase(this -> enemies.begin() + i);
 					lifes.setLifes(5);
+					explosion.play();
+
 				}	
 			}
 		}
+
+	
 		window.clear();
 		
 		//Dibuja el fondo en la ventana

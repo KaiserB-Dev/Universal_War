@@ -5,8 +5,7 @@ Enemy::Enemy(){
 	enemySpawnTimer = 0;
 	maxEnemies = 5;
 	
-	enemy_texture.loadFromFile("../Sprites/alien_verde1.png");
-	this -> setTexture(enemy_texture);
+	this -> enemy_sprite("../Sprites/alien_verde1.png");	
 	enemy_position.x = 27.0f;
 	enemy_position.y = 20.0f; 
 	this -> setPosition(enemy_position);
@@ -39,4 +38,12 @@ void Enemy::draw(sf::RenderWindow &window){
 	
 	for(auto &e : enemies)
 		window.draw(e);
+}
+
+void Enemy::enemy_sprite(const std::string &filename){
+
+	enemy_texture.loadFromFile(filename);
+	this -> setTexture(enemy_texture);
+
+
 }

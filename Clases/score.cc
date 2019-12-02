@@ -23,3 +23,8 @@ void Score::setScore(unsigned points){
 	s_score << "Score: " << score;
 	this->setString(s_score.str());
 }
+
+unsigned Score::getScore(){
+
+	return this -> score;
+}

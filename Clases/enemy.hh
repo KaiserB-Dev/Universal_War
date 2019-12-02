@@ -10,6 +10,8 @@ public:
 	Enemy();
 	void enemy_move(sf::RenderWindow &window);
 	void draw(sf::RenderWindow &window);
+
+	void enemy_sprite(const std::string &filename);
 private:
 	sf::Texture	enemy_texture;
 	sf::Vector2f enemy_position;

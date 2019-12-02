@@ -10,6 +10,7 @@ public:
 	Score();
 	void draw(sf::RenderWindow &window);
 	void setScore(unsigned points);
+	unsigned getScore();
 private:
 	sf::Font font;
 	sf::Text text_score;
