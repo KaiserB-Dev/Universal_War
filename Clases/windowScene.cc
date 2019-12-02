@@ -131,6 +131,9 @@ void windowScene::play(sf::RenderWindow &window){
 				lifes.setString("GAME OVER: Presione Esc para salir");
 				lifes.setPosition(120.0f, 350.0f);
 				isListening = false;
+				score.setPosition(190.0f, 400.0f);
+				score.setCharacterSize(50);
+
 
 				if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
 					death.stop();
