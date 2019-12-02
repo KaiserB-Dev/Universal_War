@@ -1,164 +1,102 @@
 #include "Player.hh"
 
 Player::Player(){
+    shipTexture1.loadFromFile("../Sprites/player_model1.png");
+    shipTexture2.loadFromFile("../Sprites/player_model2.png");
+    shipTexture3.loadFromFile("../Sprites/player_model3.png");
 
-    shipTexture.loadFromFile("../Sprites/space_playerModel1.png");
-
-    shipTexture2.loadFromFile("../Sprites/space_playerModel2.png");
-
-    shipTexture3.loadFromFile("../Sprites/space_playerModel3.png");
-
-    shipTexture4.loadFromFile("../Sprites/space_playerModel4.png");
-
-    this -> setTexture(shipTexture); //Carga la textura principal
-
-	position.x = 230.0f; //Indica la pocicion inicial del player
-	position.y = 380.0f;
-
-	this -> setPosition(position); //Setea la posicion inicial en el player
-
-	this -> setScale(0.7f,0.7f); //reescala el sprite
+    this -> setTexture(shipTexture1); //Carga la textura principal
+	
+	//Indica la pocicion inicial del player
+	position.x = 260.0f;
+	position.y = 560.0f;
+	
+	//Setea la posicion inicial en el player
+	this -> setPosition(position);
+	//Reescala el sprite
+	this -> setScale(0.7f,0.7f);
 
     buffer.loadFromFile("../Audio/efecto-de-sonido.ogg");
 
     sound_ship.setBuffer(buffer);
-    
     sound_ship.setVolume(50.0f);
-
     
-
+    lifes = 0;
 }
 
 void Player::Detect_Axis(){
-    position = this -> getPosition(); //Obtiene la posicion del Player, retorna un objeto de tipo Vector2f 
+	//Obtiene la posicion del Player, retorna un objeto de tipo Vector2f
+    position = this -> getPosition(); 
     x = position.x; //Almacena la posicion en X
-    y = position.y;   //Almacena la posicion en Y
+    y = position.y; //Almacena la posicion en Y
 }
 
-void Player::Controller(){ //Metodo de controles
-    //Inicia la deteccion de teclado y modifica la posicio inicial
-        
-
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-	        this -> setPosition(x, y - 5.0f); //Setea la posicion haciendo efecto movimiento
-
-            this -> setTexture(shipTexture3); //Carga la textura al player 
-
-            this -> Shoot();
-
-
-            //Se implementa cuando el usuario presiona la tecla RSHIFT Acelera la nave es por eso el set position mas 10
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-
-            this -> setPosition(x, y - 10.0f);
-
-            this -> setTexture(shipTexture4);
-
-             this -> Shoot();
-
-
-
-
-        }
-
+//Metodo de controles
+void Player::Controller(){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+    	//Condicion para que el jugador no pueda ir a una zona delimitada
+		if(y != -20.0f){
+    		//Setea la posicion haciendo efecto movimiento
+			this -> setPosition(x, y - 10.0f);
+			//Carga la textura al player
+	        this -> setTexture(shipTexture3);
+		}
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-
-        this -> setPosition(x - 5.0f, y);
-        
-        this -> setTexture(shipTexture2);  
-
-                    this -> Shoot();
- 
-
-
-         if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-
-            this -> setPosition(x - 10.0f, y);
-
-            this -> setTexture(shipTexture4);  
-
-                        this -> Shoot();
-
-         }    
+    	//Condicion para que el jugador no pueda ir a una zona delimitada
+    	if(x != 0.0f){
+    		this -> setPosition(x - 10.0f, y);
+	        this -> setTexture(shipTexture2);
+		}
     }
-            		
-
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){	
-        this -> setPosition(x, y + 5.0f);
-        
-        this -> setTexture(shipTexture3);
-
-                    this -> Shoot();
-
-
-         if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-
-            this -> setPosition(x, y + 10.0f);
-
-            this -> setTexture(shipTexture4);  
-
-                        this -> Shoot();
-
-
-         }    
-
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+    	//Condicion para que el jugador no pueda ir a una zona delimitada
+    	if(y != 570.0f){
+    		this -> setPosition(x, y + 10.0f);
+	        this -> setTexture(shipTexture3);
+		}
     }
-            		
-
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-        this -> setPosition(x + 5.0f, y);
-        this -> setTexture(shipTexture2);   
-
-                    this -> Shoot();
-
-
-         if(sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-
-            this -> setPosition(x + 10.0f, y);
-
-            this -> setTexture(shipTexture4);  
-
-                        this -> Shoot();
-
-         }        
-
+    	//Condicion para que el jugador no pueda ir a una zona delimitada
+    	if(x != 500.0f){
+    		this -> setPosition(x + 10.0f, y);
+	        this -> setTexture(shipTexture2);
+		}
     }
-
     else
-        this -> setTexture(shipTexture);
-
-    //Termina la deteccion de teclado      		
-
+        this -> setTexture(shipTexture1);
 }
 
-float Player::Get_axis_x(){ //Obtiene la posicion en X
-
+//Obtiene la posicion en X
+float Player::Get_axis_x(){
     return x;
-
 }
 
-float Player::Get_axis_y(){ //Obtiene la posicion en Y
-
+//Obtiene la posicion en Y
+float Player::Get_axis_y(){
     return y;
-
 }
 
+void Player::Shoot(Bullet &bullet){
+    bullet.fire(x , y);
+    sound_ship.play();
+}
 
-void Player::Shoot(){
+void Player::draw_Player(sf::RenderWindow &window){
+	window.draw(*this);
+}
 
+bool Player::collide_Enemy(Enemy enemy){
+	if(this->getGlobalBounds().intersects(enemy.getGlobalBounds())){
+		return true;
+	}
+	return false;
+}
 
-     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            sound_ship.play();
+int Player::get_Lifes(){
+	return lifes;
+}
 
-             bullet.setPosition( Get_axis_x(), Get_axis_y());
-
-             bullet.setPosition(bullet.Get_axis_x() , bullet.Get_axis_y() - 10);
-
-             
-            
-            }
-
+void Player::set_Lifes(int valor){
+	this -> lifes = valor;
 }
