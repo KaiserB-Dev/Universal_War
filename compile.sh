@@ -4,19 +4,18 @@ echo "Compilando..."
 
 cd Clases/
 
-g++ -Wall -o test  windowScene.cc main.cc Player.cc enemy.cc bullet.cc lifes.cc menu.cc score.cc -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+g++ -Wall -o Universal_War  windowScene.cc main.cc Player.cc enemy.cc bullet.cc lifes.cc menu.cc score.cc -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 echo "Compilacion finalizada"
 
-if [ -f test  ]; 
+if [ -f Universal_War  ]; 
 	then
 echo "Ejecutando"
 
-./test
-
-rm test
+./Universal_War
 
 cd ..
+
 
 else
 

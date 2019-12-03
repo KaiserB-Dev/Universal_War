@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Universal War
+Comment=
+Exec=./Universal_War
+Icon=/home/isaacm/Documentos/UNIVERSIDAD/Programacion_Orientada_a_Objetos/Proyecto_POO-master/Sprites/alien_morado2.png
+Path=/home/isaacm/Documentos/UNIVERSIDAD/Programacion_Orientada_a_Objetos/Proyecto_POO-master/Clases
+Terminal=false
+StartupNotify=false

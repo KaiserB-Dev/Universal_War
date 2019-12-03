@@ -38,6 +38,7 @@ private:
 	sf::Sound explosion;
 	sf::SoundBuffer buffer;
 	sf::Music death;
+	sf::Image icon;
 	bool isListening;
 
 	unsigned i;

@@ -26,8 +26,6 @@ windowScene::windowScene(){
 	enemySpawnTimerMax = 15;
 	enemySpawnTimer = 0;
 	maxEnemies = 5;
-	
-
 
 }
 
