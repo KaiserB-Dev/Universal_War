@@ -113,34 +113,4 @@ int Menu::get_option(){
 	return option_selected;
 }
 
-/*
-int Menu::Run(sf::RenderWindow &window){
-	//Inicia el loop de la ventana siempre que la ventana este abierta
-	while(window.isOpen()){
-		sf::Event event;
-		
-		while (window.pollEvent(event)){
-			//Valida el evento del boton cerrar
-            if (event.type == sf::Event::Closed)
-               	return -1; //Cierra la Ventana
-        }
-        
-        move();
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
-        	int option = get_option();
-        	
-        	if(option == 0){
-				return 1;
-			}
-			else if(option == 1){
-				return -1;
-			}
-		}
-		
-		window.clear();
-		draw(window);
-		window.display();
-	}
-	return -1;
-}*/
+

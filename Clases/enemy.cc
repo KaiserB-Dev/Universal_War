@@ -13,7 +13,6 @@ Enemy::Enemy(){
 }
 
 void Enemy::enemy_move(sf::RenderWindow &window){
-	//std::srand(static_cast<unsigned>(std::time(nullptr)));
 	
 	if(enemies.size() < maxEnemies){
     	if(enemySpawnTimer >= enemySpawnTimerMax){
