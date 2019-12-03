@@ -9,7 +9,7 @@ Player::Player(){
 	
 	//Indica la pocicion inicial del player
 	position.x = 260.0f;
-	position.y = 560.0f;
+	position.y = 550.0f;
 	
 	//Setea la posicion inicial en el player
 	this -> setPosition(position);

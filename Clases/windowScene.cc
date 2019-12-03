@@ -90,7 +90,7 @@ void windowScene::play(sf::RenderWindow &window){
 		
 		//Acciones de los Enemigos
 		for(unsigned i = 0; i < this -> enemies.size(); ++i){
-			//Movimiento de los Enemigos
+			//Movimiento de los Enemigos en base a la puntuacion 
 			if(score.getScore() >= 0 && score.getScore() <= 4000)
 				this -> enemies[i].move(0.0f,5.0f);
 
@@ -112,7 +112,18 @@ void windowScene::play(sf::RenderWindow &window){
 			if(bullet.collide_Enemy(this->enemies[i])){
 				//this->enemies[i].setPosition(1000.0f, 1000.0f);
 				this -> enemies.erase(this -> enemies.begin() + i);	
-				score.setScore(10);
+
+				if(score.getScore() >= 0 && score.getScore() <= 4000)
+					score.setScore(10);
+
+				if(score.getScore() >= 4000 && score.getScore() <= 12000)
+					score.setScore(15);
+
+				if(score.getScore() >= 12000)
+					score.setScore(20);
+
+
+
 			}
 			
 			if(this->enemies[i].getPosition().y > window.getSize().y)
