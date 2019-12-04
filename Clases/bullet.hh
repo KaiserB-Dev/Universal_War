@@ -16,8 +16,8 @@ public:
 	bool collide_Enemy(Enemy enemy);
 private:
 	sf::Texture bullet_texture;
-	sf::Clock clock;
-	sf::Time time;
+	//sf::Clock clock;
+	//sf::Time time;
 	sf::Vector2f position_bullet;
 	float x,y;
 };
