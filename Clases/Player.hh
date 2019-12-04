@@ -28,7 +28,7 @@ class Player : public sf::Sprite{
 		sf::SoundBuffer buffer;
 		sf::Sound sound_ship;
 		Bullet bullet;
-		float x,y; //Almacenamiento de posicion
+		float x = 0,y = 0; //Almacenamiento de posicion
 		int lifes;
 };
 	
