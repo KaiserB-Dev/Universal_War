@@ -1,35 +1,49 @@
 #ifndef PLAYER_HH
 #define PLAYER_HH
 
-//Librerias
+//Librerias utilizadas para el jugador
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "bullet.hh"
 #include "enemy.hh"
 
-//Declaracion de la clase derivada Player heredando la clase base Sprite, que es la clase raiz para el desarrollo del character
+//Clase Derivada Player que hereda la clase sf::Sprite
 class Player : public sf::Sprite{
-	public:
-		Player();
-		void draw_Player(sf::RenderWindow &window);
-		void Controller();
-		void Detect_Axis();
-		float Get_axis_x();
-		float Get_axis_y();
-		void Shoot(Bullet &bullet);
-		bool collide_Enemy(Enemy enemy);
-		int get_Lifes();
-		void set_Lifes(int valor);
-	private:
-		sf::Texture shipTexture1; //Objeto que carga la textura a la nave
-		sf::Texture shipTexture2;
-		sf::Texture shipTexture3;
-		sf::Vector2f position; //Objeto posicion 
-		sf::SoundBuffer buffer;
-		sf::Sound sound_ship;
-		Bullet bullet;
-		float x,y; //Almacenamiento de posicion
-		int lifes;
+public:
+	//Constructor Por Defecto
+	Player();
+	
+	//Funcion para dibujar al jugador en la ventana
+	void draw(sf::RenderWindow &window);
+	//Funcion que controla el movimiento del jugador con el teclado
+	void Controller();
+	//Funcion para detectar la posicion del jugador
+	void detect_Position();
+	//Funcion para obtener la posicion en el eje X del jugador
+	float getX();
+	//Funcion para obtener la posicion en el eje Y del jugador
+	float getY();
+	//Funcion para realizar el disparo del jugador
+	void Shoot(Bullet &bullet);
+	//Funcion que detecta si el jugador choca con los enemigos
+	bool collide_Enemy(Enemy enemy);
+	//Funcion para modificar la vida del jugador
+	void set_Life(int health);
+	//Funcion para obtener la vida del jugador
+	int get_Life();
+	
+private:
+	float x;		//Variable para la posicion en el eje X del jugador
+	float y;		//Variable para la posicion en el eje Y del jugador
+	int life;		//Variable para la vida del jugador
+	
+	Bullet bullet;					//Objeto Bullet 
+	sf::Texture player_Texture1;	//Textura No. 1 del jugador 
+	sf::Texture player_Texture2;	//Textura No. 2 del jugador 
+	sf::Texture player_Texture3;	//Textura No. 3 del jugador
+	sf::Vector2f player_position; 	//Vector para la posicion del jugador
+	sf::SoundBuffer buffer;			//Buffer del Sonido para el disparo del jugador
+	sf::Sound sound_ship;			//Sonido de disparo del jugador
 };
 	
 #endif

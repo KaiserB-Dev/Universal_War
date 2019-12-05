@@ -1,23 +1,21 @@
 #ifndef ENEMY_HH
 #define ENEMY_HH
 
+//Librerias utilizadas para los enemigos
 #include <SFML/Graphics.hpp> 
-#include <vector>
-#include <ctime>
 
+//Clase Derivada Enemy que hereda la clase sf::Sprite
 class Enemy : public sf::Sprite{
 public:
+	//Constructor Por Defecto
 	Enemy();
-	//void enemy_move(sf::RenderWindow &window);
-	//void draw(sf::RenderWindow &window);
+	
+	//Funcion para cambiar el sprite de los enemigos
+	void change_sprite(const std::string &filename);
+
 private:
-	sf::Texture	enemy_texture;
-	sf::Vector2f enemy_position;
-	std::vector<Enemy> enemies;
-	float x,y;
-	float enemySpawnTimerMax;
-	float enemySpawnTimer;
-	unsigned maxEnemies;
+	sf::Texture	enemy_texture;		//Textura de los enemigos
+	sf::Vector2f enemy_position;	//Posicion de los enemigos	
 }; 
 
 #endif

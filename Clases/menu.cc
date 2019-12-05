@@ -4,20 +4,20 @@
 /*Inicializa las variables, la fuente y el texto de las opciones,
 asi como la textura y el sprite del titulo del videojuego.*/
 Menu::Menu(){
-	//Inicializa la variable "option_selected"
+	//Se inicializa la variable "option_selected"
 	option_selected = 0;
 	
-	//Se carga la textura del archivo, se asigna al sprite y se le asigna una posicion y escala
+	//Se carga el archivo para la textura, se asigna al sprite, y se le asigna una posicion y una escala
 	title_texture.loadFromFile("../Sprites/universal_war_title.png");
 	title_sprite.setTexture(title_texture);
 	title_sprite.setPosition(65.0f, 100.0f);
 	title_sprite.setScale(10.0f,10.0f);
 	
-	//Se carga la textura del archivo y se le asigna al sprite
+	//Se carga el archivo para la textura y se le asigna al sprite
 	bg_texture.loadFromFile("../Sprites/Spr_Space.jpg");
 	bg_sprite.setTexture(bg_texture);
 	
-	//Se carga la fuente del archivo
+	//Se carga el archivo de la fuente
 	options_font.loadFromFile("../Fonts/Sansation-Regular.ttf");
 	
 	//Se le asigna la fuente, el color, el texto y la posicion a cada elemento del arreglo
@@ -60,6 +60,7 @@ void Menu::run(sf::RenderWindow &window){
         	
         	//Si el valor de la opcion es 0, muestra el juego
         	if(option == 0){
+        		//Se crea el objeto windowScene y llama a la funcion play()
 				windowScene win;
 				win.play(window);
 			}
@@ -112,35 +113,3 @@ void Menu::move(){
 int Menu::get_option(){
 	return option_selected;
 }
-
-/*
-int Menu::Run(sf::RenderWindow &window){
-	//Inicia el loop de la ventana siempre que la ventana este abierta
-	while(window.isOpen()){
-		sf::Event event;
-		
-		while (window.pollEvent(event)){
-			//Valida el evento del boton cerrar
-            if (event.type == sf::Event::Closed)
-               	return -1; //Cierra la Ventana
-        }
-        
-        move();
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Return)){
-        	int option = get_option();
-        	
-        	if(option == 0){
-				return 1;
-			}
-			else if(option == 1){
-				return -1;
-			}
-		}
-		
-		window.clear();
-		draw(window);
-		window.display();
-	}
-	return -1;
-}*/

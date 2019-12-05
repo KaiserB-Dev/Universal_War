@@ -1,31 +1,20 @@
 #include "menu.hh"
 
+//Funcion main del programa
+/*Dentro de main solo se crea una ventana, se crea
+un objeto Menu y se muestra el menu en la ventana.*/
 int main(){
+	//Se crea la ventana asignando las dimensiones y el titulo de la ventana
 	sf::RenderWindow window(sf::VideoMode(600, 700, 32),"Universal War", sf::Style::Close);
-	//Impide la pantalla completa
+	
+	//Impide que la ventana ocupe la pantalla completa
 	window.setVerticalSyncEnabled(true);
 	
+	//Se crea un objeto Menu
 	Menu menu;
-	//win.play(); //Ejecuta el programa
+	
+	//Muestra el menu en la ventana
 	menu.run(window);
-	
-	/*int number_window = 0;
-	std::vector<Windows*> windows;
-	
-	//Creacion de la ventana de las dimensiones establecidad y BBP
-	sf::RenderWindow window(sf::VideoMode(600, 700, 32),"Universal War", sf::Style::Close);
-	//Impide la pantalla completa
-	window.setVerticalSyncEnabled(true);
-	
-	Menu menu;
-	windows.push_back(&menu);
-	
-	windowScene window_scene;
-	windows.push_back(&window_scene);
-	
-	while(number_window >= 0){
-		number_window = windows[number_window]->Run(window);
-	}*/
 
 	return 0;
 }
