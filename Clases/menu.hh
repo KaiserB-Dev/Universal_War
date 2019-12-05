@@ -22,6 +22,7 @@ public:
 
 private:
 	int option_selected;		//Variable para la opcion seleccionada
+	
 	sf::Font options_font;		//Fuente para las opciones del menu
 	sf::Text options_text[2];	//Arreglo que almacena el texto de las opciones del menu
 	sf::Texture title_texture;	//Textura del titulo del videojuego
@@ -31,4 +32,3 @@ private:
 };
 
 #endif
-

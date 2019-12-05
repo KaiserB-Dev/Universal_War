@@ -1,25 +1,25 @@
 #ifndef BULLET_HH
 #define BULLET_HH
 
-//Librerias
+//Librerias utilizadas para la bala del jugador
 #include <SFML/Graphics.hpp>
 #include "enemy.hh"
 
+//Clase Derivada Bullet que hereda la clase sf::Sprite
 class Bullet : public sf::Sprite{
 public:
+	//Constructor Por Defecto
 	Bullet();
-	void Detect_Axis();
-	float Get_axis_x();
-	float Get_axis_y();
+	
+	//Funcion para dibujar la bala en la ventana
 	void draw(sf::RenderWindow &window);
-	void fire(float x_func, float y_func);
+	//Funcion para colocar y mover la bala
+	void fire(float player_x, float player_y);
+	//Funcion que detecta si la bala choca con los enemigos
 	bool collide_Enemy(Enemy enemy);
+	
 private:
-	sf::Texture bullet_texture;
-	//sf::Clock clock;
-	//sf::Time time;
-	sf::Vector2f position_bullet;
-	float x,y;
+	sf::Texture bullet_texture;	//Textura de la bala
 };
 
 #endif
