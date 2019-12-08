@@ -185,7 +185,7 @@ void windowScene::enemyActions(sf::RenderWindow &window){
 		a los enemigos si la puntuacion es mayor a 12000.*/
 		if(score.getScore() >= 12000){
 			enemy.change_sprite("../Sprites/alien_morado1.png");
-			this -> enemies[i].move(0.0f,9.0f);
+			this -> enemies[i].move(0.0f,10.0f);
 		}
 		
 		/*Si la bala del jugador toca a un enemigo, este es eliminado
