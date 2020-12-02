@@ -1,4 +1,4 @@
-# Proyecto_POO
+# Universal_War
 Carpeta de proyecto final de POO (Videojuego)
 COMPILATION MODE:
 ejecute compile.sh
